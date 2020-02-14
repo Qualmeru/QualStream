@@ -13,7 +13,7 @@ namespace QualStream
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
 
-        public async Task SyncVideo(int timestamp)
+        public async Task SyncVideo(double timestamp)
         {
             await Clients.All.SendAsync("ReceiveTimestamp", timestamp);
         }

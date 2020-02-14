@@ -5,7 +5,9 @@ const opts = {
     height: '390',
     width: '640',
     playerVars: { // https://developers.google.com/youtube/player_parameters
-      autoplay: 1
+        autoplay: 1,
+        start: 0,
+        end: 0
     }
   };
 
@@ -38,7 +40,11 @@ export class Chat extends Component {
                 this.setState({ messages });
                 const chatContainer = document.querySelector(".ChatContainer");
                 chatContainer.scrollTop = chatContainer.scrollHeight;
-            });
+               });
+               this.state.hubConnection.on("ReceiveTimestamp", (timestap) => { 
+            //    document.lo youtube
+                 window.document.getElementById("youtube").seekTo(timestap, false);
+               });
           });
           
     
@@ -92,7 +98,17 @@ export class Chat extends Component {
         
         if (currentvideotime != this.state.currentvideotime) {
             this.setState({ currentvideotime });
+            // console.log(currentvideotime);
+             this.syncVideo(currentvideotime);
         }
+    }
+    syncVideo = (timestap) => {
+        //console.log(timestap);
+        this.state.hubConnection
+        .invoke('SyncVideo', timestap)
+        .catch(err => console.error(err));
+
+
     }
     onStateChange = (e) => {
        
@@ -104,7 +120,7 @@ export class Chat extends Component {
 
         return (
             <div>
-                <YouTube videoId="2g811Eo7K8U"
+                <YouTube id="youtube" videoId="2g811Eo7K8U"
                     opts={opts}
                     onReady={this.onReady}
                     onPlay={this.onPlay}
