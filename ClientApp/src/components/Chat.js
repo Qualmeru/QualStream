@@ -119,14 +119,16 @@ export class Chat extends Component {
     render() {
 
         return (
-            <div>
-                <YouTube id="youtube" videoId="2g811Eo7K8U"
+            <div className="videoChatContainer">
+
+                <YouTube className="youtubeplayer" id="youtube" videoId="2g811Eo7K8U"
                     opts={opts}
                     onReady={this.onReady}
                     onPlay={this.onPlay}
                     onStateChange={this.onStateChange}
                     />
-                <div className="ChatContainer">
+                <div className="chatContainer" >
+                <div className="ChatTextArea">
                 {this.state.messages.map((message, index) => (
                   <span style={{display: 'block'}} key={index}> {message} </span>
                 ))}
@@ -142,6 +144,8 @@ export class Chat extends Component {
         
               <button onClick={this.sendMessage}>Send</button>
         
+                </div>
+               
              
             </div>
           );
