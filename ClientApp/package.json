@@ -19,6 +19,8 @@
     "rimraf": "^2.7.1"
   },
   "devDependencies": {
+    "@types/react": "^16.9.19",
+    "@types/react-youtube": "^7.6.2",
     "ajv": "^6.11.0",
     "cross-env": "^5.2.1",
     "eslint": "^6.6.0",
