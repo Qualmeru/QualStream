@@ -5,6 +5,7 @@ import { Home } from './components/Home';
 import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import { Chat } from './components/Chat';
+import { Example, TextInputWithFocusButton, FancyInput } from './hooks/example';
 
 import './custom.css'
 
@@ -18,6 +19,9 @@ export default class App extends Component {
         <Route path='/counter' component={Counter} />
         <Route path='/fetch-data' component={FetchData} />
         <Route path='/chat' component={Chat} />
+        <Route path="/example" component={Example} />
+        <Route path="/textinput" component={TextInputWithFocusButton} />
+        <Route path="/fancyInput" component={FancyInput }/>
       </Layout>
     );
   }

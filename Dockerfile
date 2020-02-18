@@ -15,12 +15,10 @@ RUN npm install
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
 
-
-
-COPY ["QualStream/QualStream.csproj", "QualStream/"]
+COPY ["QualStream/QualStream.csproj", "/"]
 RUN dotnet restore "QualStream/QualStream.csproj"
 COPY . .
-WORKDIR "/src/QualStream"
+WORKDIR /src/QualStream
 RUN dotnet build "QualStream.csproj" -c Release -o /app/build
 
 FROM build AS publish

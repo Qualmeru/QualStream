@@ -14,13 +14,12 @@ code {
 }
 .ChatTextArea {
   overflow-y: auto ;
-  height: 300px;
+  height: 346px;
 }
 
 .videoChatContainer {
   display: grid;
   grid-template-areas: "youtubeplayer chatContainer";
-
 }
 .chatContainer {
   grid-area: chatContainer

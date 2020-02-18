@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import * as signalR from "@microsoft/signalr";
 import YouTube from 'react-youtube';
-import opts from "../service/youtube";
 
+const opts = {
+    height: '400',
+    width: '700',
+    playerVars: { // https://developers.google.com/youtube/player_parameters
+        autoplay: 0,
+        start: 0,
+        end: 0
+    }
+  };
 export class Chat extends Component {
     constructor(props) {
         super(props);
@@ -25,7 +33,6 @@ export class Chat extends Component {
               .then(() => console.log('Connection started!'))
               .catch(err => console.log('Error while establishing connection :('));
               this.state.hubConnection.on("ReceiveMessage", (nick, message) => {
-         
                 const text = `${nick}: ${message}`;
                 const messages = this.state.messages.concat([text]);
                 this.setState({ messages });
@@ -38,7 +45,6 @@ export class Chat extends Component {
                     //  console.log(timestap, this.state.currentvideotime);
                     this.state.player.seekTo(timestap, true);
                  }
-               
                 }
                });
                this.state.hubConnection.on("ReceivePlay", (nick) => {
